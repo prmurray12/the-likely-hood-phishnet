@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Likely Hood - Phish Statistics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'phish-green': '#009944',
+                        'phish-blue': '#003366',
+                        'bg-dark': '#1f2937',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans min-h-screen flex items-center justify-center p-4">
+
+    <div id="app" class="w-full max-w-lg">
+        <div class="hood-card rounded-xl p-8 text-white text-center">
+            <div class="mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="hood-icon w-16 h-16 mx-auto text-phish-green">
+                    <path fill-rule="evenodd" d="M11.54 22.351A2.43 2.43 0 0 0 14.188 23.25h2.176a2.43 2.43 0 0 0 2.648-2.288L21 1.758a.75.75 0 0 0-.01-9.982c-.08-.046-.145-.078-.175-.088l-1.996.172a1.8 1.8 0 0 0-1.605 1.716l-1.125 12.871-3.6-2.585a2.25 2.25 0 0 0-2.333 0l-3.6 2.585-1.125-12.871a1.8 1.8 0 0 0-1.605-1.716l-1.996-.172a.75.75 0 0 0-.01 9.982L11.54 22.351Z" clip-rule="evenodd" />
+                </svg>
+                <h1 class="text-3xl font-extrabold mt-2 text-phish-green">The Likely Hood</h1>
+                <p class="text-gray-400">Data provided in real-time by Phish.net.</p>
+            </div>
+            
+            <div class="bg-gray-700 p-4 rounded-lg mb-4 fade-in-item" style="animation-delay: 0.1s;">
+                <h2 class="text-lg font-semibold text-gray-200 mb-1">Last Performance</h2>
+                <div id="loading-spinner" class="spinner"></div>
+                <p id="last-date" class="text-xl font-bold text-phish-green transition duration-500 hidden"></p>
+                <p id="last-location" class="text-sm text-gray-400 hidden"></p>
+            </div>
+
+            <div class="bg-gray-700 p-4 rounded-lg mb-4 fade-in-item" style="animation-delay: 0.2s;">
+                <h2 class="text-lg font-semibold text-gray-200 mb-1">Show Gap</h2>
+                <p id="shows-since" class="text-3xl font-extrabold text-white transition duration-500">
+                    <span id="gap-number">...</span> shows since the last performance
+                </p>
+            </div>
+
+            <div class="bg-gray-700 p-4 rounded-lg fade-in-item" style="animation-delay: 0.3s;">
+                <h2 class="text-lg font-semibold text-gray-200 mb-1">Upcoming Performance Probability</h2>
+                <p id="likely-hood" class="text-3xl font-extrabold text-red-400 transition duration-500">
+                    The Likely Hood is currently <span id="probability-value">...</span>%
+                </p>
+                <p class="text-xs text-gray-400 mt-1">
+                    Based on an expected rate of <span id="expected-rate-display">...</span> performances.
+                </p>
+            </div>
+            
+        </div>
+        <p class="text-center text-xs text-gray-600 mt-4">The LikelyHood is a subsidiary of Wook and Co</p>
+    </div>
+
+    <script src="js/phishnet-api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
